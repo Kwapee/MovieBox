@@ -47,18 +47,19 @@ const Detail = () => {
           <div>
             <img
               className="poster "
-              src={`https://image.tmdb.org/t/p/w500/${movie?.backdrop_path}`}
+              src={`https://image.tmdb.org/t/p/w1280/${movie?.backdrop_path}`}
             />
           </div>
 
           <div className="main">
             <div className=" flex justify-between items-center">
               <div className="title flex ">
-                <div className="font-roboto flex justify-around w-3/4 text-2xl">
+                <div className="font-roboto flex justify-around w-3/4 md:text-sm text-2xl">
                   <p>
                     <span data-testid="movie-title">{movie?.title}</span> ·{" "}
                     <span data-testid="movie-release_date">
-                      {movie?.release_date.slice(0, 4)}
+                   {movie ? new Date(movie.release_date).toUTCString() : ""}
+   
                     </span>{" "}
                     · <span data-testid="movie-runtime">{movie?.runtime}m</span>
                   </p>
@@ -70,7 +71,7 @@ const Detail = () => {
                 {movie.vote_average}/10 | {movie.popularity}
               </p>
             </div>
-            <div className="flex justify-between">
+            <div className="flex sm:text-sm sm:flex-col justify-between">
               <div className="desc mt-4 ">
                 <p data-testid="movie-overview" className="mb-8">
                   {movie?.overview}
